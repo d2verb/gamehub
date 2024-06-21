@@ -1,32 +1,37 @@
 "use client";
 
 import { useSidebar } from "@/store/use-sidebar";
-import { User } from "@prisma/client";
+import { Follow, User } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-interface RecommendedProps {
-  data: User[];
+interface FollowingProps {
+  data: (Follow & { following: User })[];
 };
 
-export const Recommended = ({ data }: RecommendedProps) => {
+export const Following = ({
+  data
+}: FollowingProps) => {
   const { collapsed } = useSidebar((state) => state);
-  const showLabel = !collapsed && data.length > 0;
+
+  if (!data.length) {
+    return null;
+  }
+
   return (
     <div>
-      {showLabel && (
+      {!collapsed && (
         <div className="pl-6 mb-4">
           <p className="text-sm text-muted-foreground">
-            Recommended
+            Following
           </p>
         </div>
       )}
       <ul className="space-y-2 px-2">
-        {data.map((user) => (
+        {data.map((follow) => (
           <UserItem
-            key={user.id}
-            username={user.username}
-            imageUrl={user.imageUrl}
-            isLive={true}
+            key={follow.following.id}
+            username={follow.following.username}
+            imageUrl={follow.following.imageUrl}
           />
         ))}
       </ul>
@@ -34,7 +39,7 @@ export const Recommended = ({ data }: RecommendedProps) => {
   );
 };
 
-export const RecommendedSkeleton = () => {
+export const FollowingSkeleton = () => {
   return (
     <ul className="pt-2 px-2">
       {[...Array(3)].map((_, i) => (
