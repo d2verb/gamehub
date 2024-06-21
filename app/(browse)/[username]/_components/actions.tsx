@@ -19,7 +19,7 @@ export const Actions = ({
   const onClick = () => {
     startTransition(() => {
       onFollow(userId)
-        .then((data) => toast.success(`You are now following ${data.following.username}`))
+        .then((follow) => toast.success(`You are now following ${follow.following.username}`))
         .catch(() => toast.error("Something went wrong"));
     });
   }
