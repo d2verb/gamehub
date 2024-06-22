@@ -8,10 +8,18 @@ export const getFollowedUsers = async () => {
     return db.follow.findMany({
       where: {
         followerId: self.id,
+        // Do not get users that are blocking you
+        following: {
+          blocking: {
+            none: {
+              blockedId: self.id,
+            },
+          },
+        },
       },
       include: {
         following: true,
-      }
+      },
     });
   } catch {
     return [];
@@ -44,7 +52,7 @@ export const isFollowingUser = async (id: string) => {
   } catch {
     return false;
   }
-}
+};
 
 export const followUser = async (id: string) => {
   const self = await getSelf();

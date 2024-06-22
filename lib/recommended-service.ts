@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 
 export const getRecommended = async () => {
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   let userId;
 
   try {
@@ -29,21 +29,30 @@ export const getRecommended = async () => {
             NOT: {
               followedBy: {
                 some: {
-                  followerId: userId
+                  followerId: userId,
+                },
+              },
+            },
+          },
+          // Do not show users that are blocking you
+          {
+            NOT: {
+              blocking: {
+                some: {
+                  blockedId: userId,
                 },
               },
             },
           },
         ],
-      }
+      },
     });
   } else {
     users = await db.user.findMany({
       orderBy: {
-        createdAt: "desc"
+        createdAt: "desc",
       },
     });
-
   }
   return users;
 };
