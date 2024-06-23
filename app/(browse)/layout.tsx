@@ -7,13 +7,11 @@ export default ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <div className="flex h-full pt-20">
+      <div className="flex h-full pt-14">
         <Suspense fallback={<SidebarSkeleton />}>
           <Sidebar />
         </Suspense>
-        <Container>
-          {children}
-        </Container>
+        <Container>{children}</Container>
       </div>
     </>
   );

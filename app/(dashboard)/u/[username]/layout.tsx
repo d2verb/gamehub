@@ -19,7 +19,7 @@ export default async ({ params, children }: CreatorLayoutProps) => {
   return (
     <>
       <Navbar />
-      <div className="flex h-full pt-20">
+      <div className="flex h-full pt-14">
         <Sidebar />
         <Container>{children}</Container>
       </div>
