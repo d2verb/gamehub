@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { WebhookReceiver } from "livekit-server-sdk";
 
 import { db } from "@/lib/db";
+import { jwtDecode } from "jwt-decode";
 
 const receiver = new WebhookReceiver(
   process.env.LIVEKIT_API_KEY!,
@@ -17,6 +18,9 @@ export async function POST(req: Request) {
     return new Response("No authorization header", { status: 400 });
   }
 
+  // FIXME:
+  // The code below sometimes causes "JWTClaimValidationFailed: "nbf" claim timestamp check failed" exception.
+  // Maybe the "nbf" claim is too close to the current time but I don't know how to fix it now.
   const event = await receiver.receive(body, authorization);
 
   if (event.event === "ingress_started") {
