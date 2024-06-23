@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { CopyButton } from "./copy-button";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 interface KeyCardProps {
   value: string | null;
@@ -11,9 +12,11 @@ interface KeyCardProps {
 
 export const KeyCard = ({ value }: KeyCardProps) => {
   const [show, setShow] = useState(false);
+  const ShowHideIcon = show ? <EyeOff /> : <Eye />;
+
   return (
     <div className="rounded-xl bg-muted p-6">
-      <div className="flex items-center gap-x-10">
+      <div className="flex flex-col gap-y-3 lg:flex-row lg:items-center lg:gap-x-10">
         <p className="font-semibold shrink-0">Server Key</p>
         <div className="space-y-2 w-full">
           <div className="w-full flex items-center gap-x-2">
@@ -25,7 +28,7 @@ export const KeyCard = ({ value }: KeyCardProps) => {
             />
             <CopyButton value={value || ""} />
             <Button onClick={() => setShow(!show)} size="sm" variant="link">
-              {show ? "Hide" : "Show"}
+              {ShowHideIcon}
             </Button>
           </div>
         </div>

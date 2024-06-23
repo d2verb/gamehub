@@ -48,7 +48,7 @@ export const ConnectModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="primary">Generate connection</Button>
+        <Button variant="primary">Generate</Button>
       </DialogTrigger>
 
       <DialogContent>

@@ -8,7 +8,7 @@ interface UrlCardProps {
 export const UrlCard = ({ value }: UrlCardProps) => {
   return (
     <div className="rounded-xl bg-muted p-6">
-      <div className="flex items-center gap-x-10">
+      <div className="flex flex-col gap-y-3 lg:flex-row lg:items-center lg:gap-x-10">
         <p className="font-semibold shrink-0">Server URL</p>
         <div className="space-y-2 w-full">
           <div className="w-full flex items-center gap-x-2">

@@ -28,7 +28,7 @@ export default async () => {
         />
         <ToggleCard
           field="isChatFollowersOnly"
-          label="Must be following to chat"
+          label="Followers only"
           value={stream.isChatFollowersOnly}
         />
       </div>
