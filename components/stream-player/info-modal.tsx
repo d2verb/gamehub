@@ -60,10 +60,6 @@ export const InfoModal = ({
     });
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -80,7 +76,7 @@ export const InfoModal = ({
           <div className="space-y-2">
             <Label>Name</Label>
             <Input
-              onChange={onChange}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Stream name"
               value={name}
               disabled={isPending}
@@ -130,13 +126,13 @@ export const InfoModal = ({
             )}
           </div>
           <div className="flex justify-between">
-            <DialogClose asChild>
-              <Button ref={closeRef} type="button" variant="ghost">
+            <DialogClose ref={closeRef} asChild>
+              <Button type="button" variant="ghost">
                 Cancel
               </Button>
             </DialogClose>
             <Button type="submit" variant="primary" disabled={isPending}>
-              Submit
+              Save
             </Button>
           </div>
         </form>
