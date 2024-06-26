@@ -1,8 +1,7 @@
 import { isFollowingUser } from "@/lib/follow-service";
 import { getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
-import { Actions } from "./_components/actions";
-import { isBlockedByUser, isBlockedUser } from "@/lib/block-service";
+import { isBlockedByUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/components/stream-player";
 
 interface UserPageProps {
