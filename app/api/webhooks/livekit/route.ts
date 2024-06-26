@@ -3,6 +3,7 @@ import { WebhookReceiver } from "livekit-server-sdk";
 
 import { db } from "@/lib/db";
 import { jwtDecode } from "jwt-decode";
+import { revalidatePath } from "next/cache";
 
 const receiver = new WebhookReceiver(
   process.env.LIVEKIT_API_KEY!,
