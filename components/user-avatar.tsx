@@ -1,35 +1,28 @@
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
-import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from "@/components/ui/avatar";
 import { LiveBadge } from "@/components/live-badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
-const avatarSizes = cva(
-  "",
-  {
-    variants: {
-      size: {
-        default: "h-8 w-8",
-        lg: "h-14 w-14"
-      }
-    },
-    defaultVariants: {
-      size: "default",
+const avatarSizes = cva("", {
+  variants: {
+    size: {
+      default: "h-8 w-8",
+      lg: "h-14 w-14",
     },
   },
-);
+  defaultVariants: {
+    size: "default",
+  },
+});
 
 interface UserAvatorProps extends VariantProps<typeof avatarSizes> {
   username: string;
   imageUrl: string;
   isLive?: boolean;
   showBadge?: boolean;
-};
+}
 
 export const UserAvator = ({
   username,
@@ -44,8 +37,9 @@ export const UserAvator = ({
       <Avatar
         className={cn(
           isLive && "ring-2 ring-rose-500 border border-background",
-          avatarSizes({ size })
-        )}>
+          avatarSizes({ size }),
+        )}
+      >
         <AvatarImage src={imageUrl} className="object-cover" />
         <AvatarFallback>
           {username[0]}
@@ -61,15 +55,8 @@ export const UserAvator = ({
   );
 };
 
-interface UserAvatarSkeletonProps extends VariantProps<typeof avatarSizes> { };
+interface UserAvatarSkeletonProps extends VariantProps<typeof avatarSizes> {}
 
-export const UserAvatarSkeleton = ({
-  size
-}: UserAvatarSkeletonProps) => {
-  return (
-    <Skeleton className={cn(
-      "rounded-full",
-      avatarSizes({ size }),
-    )} />
-  );
+export const UserAvatarSkeleton = ({ size }: UserAvatarSkeletonProps) => {
+  return <Skeleton className={cn("rounded-full", avatarSizes({ size }))} />;
 };

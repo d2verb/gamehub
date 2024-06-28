@@ -21,5 +21,5 @@ export const useChatSidebar = create<ChatSidebarStore>()(
     onExpand: () => set(() => ({ collapsed: false })),
     onCollapse: () => set(() => ({ collapsed: true })),
     onChangeVariant: (variant: ChatVariant) => set(() => ({ variant })),
-  }))
+  })),
 );

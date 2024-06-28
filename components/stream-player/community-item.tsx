@@ -1,11 +1,11 @@
 "use client";
 
-import { cn, stringToColor } from "@/lib/utils";
+import { onBlock } from "@/actions/block";
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
+import { cn, stringToColor } from "@/lib/utils";
 import { MinusCircle } from "lucide-react";
 import { useTransition } from "react";
-import { onBlock } from "@/actions/block";
 import { toast } from "sonner";
 
 interface CommunityItemProps {
@@ -41,7 +41,7 @@ export const CommunityItem = ({
     <div
       className={cn(
         "group flex items-center justify-between w-full p-2 rounded-md text-sm hover:bg-white/5",
-        isPending && "opacity-50 pointer-events-none"
+        isPending && "opacity-50 pointer-events-none",
       )}
     >
       <p style={{ color: color }}>{participantName}</p>

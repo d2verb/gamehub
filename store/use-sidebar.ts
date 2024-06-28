@@ -12,5 +12,5 @@ export const useSidebar = create<SidebarStore>()(
     collapsed: false,
     onExpand: () => set(() => ({ collapsed: false })),
     onCollapse: () => set(() => ({ collapsed: true })),
-  }))
+  })),
 );

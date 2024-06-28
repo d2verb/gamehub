@@ -1,5 +1,8 @@
 "use client";
 
+import { updateStream } from "@/actions/stream";
+import { Hint } from "@/components/hint";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,17 +11,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { useState, useTransition, useRef, ElementRef } from "react";
-import { updateStream } from "@/actions/stream";
-import { toast } from "sonner";
+import { Label } from "@/components/ui/label";
 import { UploadDropzone } from "@/lib/uploading";
-import { useRouter } from "next/navigation";
-import { Hint } from "@/components/hint";
 import { Trash } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { type ElementRef, useRef, useState, useTransition } from "react";
+import { toast } from "sonner";
 
 interface InfoModalProps {
   initialName: string;

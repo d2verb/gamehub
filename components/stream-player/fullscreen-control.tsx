@@ -1,5 +1,5 @@
-import { Maximize, Minimize } from "lucide-react";
 import { Hint } from "@/components/hint";
+import { Maximize, Minimize } from "lucide-react";
 
 interface FullscreenControlProps {
   isFullscreen: boolean;

@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 import {
   useChat,
@@ -9,11 +10,10 @@ import {
 import { ConnectionState } from "livekit-client";
 import { useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { ChatHeader, ChatHeaderSkelton } from "./chat-header";
-import { ChatForm, ChatFormSkeleton } from "./chat-form";
-import { ChatList, ChatListSkeleton } from "./chat-list";
 import { ChatCommunity } from "./chat-community";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ChatForm, ChatFormSkeleton } from "./chat-form";
+import { ChatHeader, ChatHeaderSkelton } from "./chat-header";
+import { ChatList, ChatListSkeleton } from "./chat-list";
 
 interface ChatProps {
   viewerName: string;

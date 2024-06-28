@@ -1,11 +1,11 @@
 "use server";
 
-import { v4 } from "uuid";
 import { AccessToken } from "livekit-server-sdk";
+import { v4 } from "uuid";
 
 import { getSelf } from "@/lib/auth-service";
-import { getUserById } from "@/lib/user-service";
 import { isBlockedByUser } from "@/lib/block-service";
+import { getUserById } from "@/lib/user-service";
 
 export const createViwerToken = async (hostIdentity: string) => {
   let self;
@@ -37,7 +37,7 @@ export const createViwerToken = async (hostIdentity: string) => {
     {
       identity: isHost ? `host-${self.id}` : self.id,
       name: self.username,
-    }
+    },
   );
 
   token.addGrant({

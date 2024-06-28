@@ -1,8 +1,8 @@
 "use client";
 
-import { Volume1, Volume2, VolumeX } from "lucide-react";
 import { Hint } from "@/components/hint";
 import { Slider } from "@/components/ui/slider";
+import { Volume1, Volume2, VolumeX } from "lucide-react";
 
 interface VolumeControlProps {
   value: number;

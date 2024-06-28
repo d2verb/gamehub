@@ -1,15 +1,15 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   useConnectionState,
   useRemoteParticipant,
   useTracks,
 } from "@livekit/components-react";
 import { ConnectionState, Track } from "livekit-client";
-import { OfflineVideo } from "./offline-video";
-import { LoadingVideo } from "./loading-video";
 import { LiveVideo } from "./live-video";
-import { Skeleton } from "@/components/ui/skeleton";
+import { LoadingVideo } from "./loading-video";
+import { OfflineVideo } from "./offline-video";
 
 interface VideoProps {
   hostName: string;

@@ -1,5 +1,5 @@
-import { useMemo } from "react";
 import { Info } from "lucide-react";
+import { useMemo } from "react";
 
 import { Hint } from "@/components/hint";
 

@@ -2,7 +2,7 @@
 
 import { getSelf } from "@/lib/auth-service";
 import { db } from "@/lib/db";
-import { User } from "@prisma/client";
+import type { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 export const updateUser = async (values: Partial<User>) => {

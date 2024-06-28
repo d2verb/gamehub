@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 import { ChatInfo } from "./chat-info";
 
 interface ChatFormProps {
@@ -67,7 +68,7 @@ export const ChatForm = ({
           placeholder="Send a message"
           className={cn(
             "border-white/10",
-            (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0"
+            (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0",
           )}
         />
       </div>

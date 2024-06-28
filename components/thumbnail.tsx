@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { UserAvator } from "@/components/user-avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { LiveBadge } from "@/components/live-badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { UserAvator } from "@/components/user-avatar";
+import Image from "next/image";
 
 interface ThumbnailProps {
   src: string | null;

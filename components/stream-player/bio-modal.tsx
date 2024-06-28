@@ -1,5 +1,8 @@
 "use client";
 
+import { updateUser } from "@/actions/user";
+import { Hint } from "@/components/hint";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,11 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Hint } from "@/components/hint";
 import { Textarea } from "@/components/ui/textarea";
-import { ElementRef, useRef, useState, useTransition } from "react";
-import { updateUser } from "@/actions/user";
+import { type ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 interface BioModalProps {

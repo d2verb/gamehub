@@ -1,14 +1,14 @@
 "use client";
 
 import { UserAvatarSkeleton, UserAvator } from "@/components/user-avatar";
-import { VerifiedMark } from "../verified-mark";
 import {
   useParticipants,
   useRemoteParticipant,
 } from "@livekit/components-react";
 import { UserIcon } from "lucide-react";
-import { Actions, ActionsSkeleton } from "./actions";
 import { Skeleton } from "../ui/skeleton";
+import { VerifiedMark } from "../verified-mark";
+import { Actions, ActionsSkeleton } from "./actions";
 
 interface HeaderProps {
   hostName: string;

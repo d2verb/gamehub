@@ -2,9 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 
-import { db } from "@/lib/db";
-import { Stream } from "@prisma/client";
 import { getSelf } from "@/lib/auth-service";
+import { db } from "@/lib/db";
+import type { Stream } from "@prisma/client";
 
 export const updateStream = async (values: Partial<Stream>) => {
   try {

@@ -1,15 +1,15 @@
 "use client";
 
-import { useParticipants } from "@livekit/components-react";
-import { useDebounceValue } from "usehooks-ts";
-import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useParticipants } from "@livekit/components-react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import {
-  LocalParticipant,
+  type LocalParticipant,
   Participant,
-  RemoteParticipant,
+  type RemoteParticipant,
 } from "livekit-client";
+import { useMemo, useState } from "react";
+import { useDebounceValue } from "usehooks-ts";
 import { CommunityItem } from "./community-item";
 
 interface ChatCommunityProps {
@@ -31,13 +31,16 @@ export const ChatCommunity = ({
   };
 
   const filteredParticipants = useMemo(() => {
-    const deduped = participants.reduce((acc, participant) => {
-      const hostAsViewer = `host-${participant.identity}`;
-      if (!acc.some((p) => p.identity === hostAsViewer)) {
-        acc.push(participant);
-      }
-      return acc;
-    }, [] as (RemoteParticipant | LocalParticipant)[]);
+    const deduped = participants.reduce(
+      (acc, participant) => {
+        const hostAsViewer = `host-${participant.identity}`;
+        if (!acc.some((p) => p.identity === hostAsViewer)) {
+          acc.push(participant);
+        }
+        return acc;
+      },
+      [] as (RemoteParticipant | LocalParticipant)[],
+    );
 
     return deduped.filter((participant) => {
       return participant.name
