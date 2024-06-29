@@ -1,8 +1,8 @@
 "use client";
 
 import { useTracks } from "@livekit/components-react";
-import { type Participant, Track } from "livekit-client";
-import { useEffect, useRef, useState } from "react";
+import { Track, type Participant } from "livekit-client";
+import { useRef, useState } from "react";
 import { useEventListener } from "usehooks-ts";
 import { FullscreenControl } from "./fullscreen-control";
 import { VolumeControl } from "./volume-control";
@@ -35,10 +35,6 @@ export const LiveVideo = ({ participant }: LiveVideoProps) => {
       videoRef.current.volume = isMuted ? 0.5 : 0;
     }
   };
-
-  useEffect(() => {
-    onVolumeChange(0);
-  });
 
   const toggleFullscreen = () => {
     if (isFullscreen) {
