@@ -21,6 +21,7 @@ export const VariantToggle = () => {
   return (
     <Hint label={label}>
       <Button
+        asChild
         onClick={onToggle}
         variant="ghost"
         className="h-auto p-2 hover:bg-white/10 hover:text-primary bg-transparent"
