@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { UrlCard } from "./_components/url-card";
 import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
-import { KeyCard } from "./_components/key-card";
 import { ConnectModal } from "./_components/connect-modal";
+import { KeyCard } from "./_components/key-card";
+import { UrlCard } from "./_components/url-card";
 
 export default async () => {
   const self = await getSelf();

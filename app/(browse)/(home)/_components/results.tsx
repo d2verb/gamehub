@@ -1,6 +1,6 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import { getStreams } from "@/lib/feed-service";
 import { ResultCard, ResultCardSkeleton } from "./result-card";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export const Results = async () => {
   const data = await getStreams();

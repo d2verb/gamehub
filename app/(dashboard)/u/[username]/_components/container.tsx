@@ -12,7 +12,7 @@ interface ContainerProps {
 
 export const Container = ({ children }: ContainerProps) => {
   const { collapsed, onExpand, onCollapse } = useCreatorSidebar(
-    (state) => state
+    (state) => state,
   );
 
   const matches = useMediaQuery("(max-width: 1024px)");

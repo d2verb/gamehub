@@ -1,5 +1,6 @@
 "use client";
 
+import { createIngress } from "@/actions/ingress";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,10 +18,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AlertTriangle } from "lucide-react";
 import { IngressInput } from "livekit-server-sdk";
-import { useState, useTransition, useRef, ElementRef } from "react";
-import { createIngress } from "@/actions/ingress";
+import { AlertTriangle } from "lucide-react";
+import { type ElementRef, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 const RTMP = String(IngressInput.RTMP_INPUT);
@@ -36,7 +36,7 @@ export const ConnectModal = () => {
 
   const onSubmit = () => {
     startTransition(() => {
-      createIngress(parseInt(ingressType))
+      createIngress(Number.parseInt(ingressType))
         .then(() => {
           toast.success("Ingress created");
           closeRef?.current?.click();

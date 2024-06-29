@@ -1,10 +1,10 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { CopyButton } from "./copy-button";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
 import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { CopyButton } from "./copy-button";
 
 interface KeyCardProps {
   value: string | null;

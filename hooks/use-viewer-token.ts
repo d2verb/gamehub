@@ -1,7 +1,7 @@
-import { toast } from "sonner";
-import { useEffect, useState } from "react";
-import { JwtPayload, jwtDecode } from "jwt-decode";
 import { createViwerToken } from "@/actions/token";
+import { type JwtPayload, jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const useViwerToken = (hostIdentity: string) => {
   const [token, setToken] = useState("");
@@ -15,7 +15,7 @@ export const useViwerToken = (hostIdentity: string) => {
         setToken(viewerToken);
 
         const decodedToken = jwtDecode<JwtPayload & { name?: string }>(
-          viewerToken
+          viewerToken,
         );
 
         const name = decodedToken?.name;

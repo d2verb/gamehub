@@ -1,8 +1,8 @@
+import { StreamPlayer } from "@/components/stream-player";
+import { isBlockedByUser } from "@/lib/block-service";
 import { isFollowingUser } from "@/lib/follow-service";
 import { getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
-import { isBlockedByUser } from "@/lib/block-service";
-import { StreamPlayer } from "@/components/stream-player";
 
 interface UserPageProps {
   params: {

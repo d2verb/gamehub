@@ -2,13 +2,13 @@
 
 import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { useSidebar } from "@/store/use-sidebar";
-import { Skeleton } from "@/components/ui/skeleton";
-import Link from "next/link";
-import { UserAvator } from "@/components/user-avatar";
 import { LiveBadge } from "@/components/live-badge";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { UserAvator } from "@/components/user-avatar";
+import { cn } from "@/lib/utils";
+import { useSidebar } from "@/store/use-sidebar";
+import Link from "next/link";
 
 interface UserItemProps {
   username: string;
@@ -16,11 +16,7 @@ interface UserItemProps {
   isLive?: boolean;
 }
 
-export const UserItem = ({
-  username,
-  imageUrl,
-  isLive,
-}: UserItemProps) => {
+export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
   const pathname = usePathname();
   const { collapsed } = useSidebar((state) => state);
 
@@ -38,23 +34,15 @@ export const UserItem = ({
       )}
     >
       <Link href={href}>
-        <div className={cn(
-          "flex items-center w-full gap-x-4",
-          collapsed && "justify-center",
-        )}>
-          <UserAvator
-            username={username}
-            imageUrl={imageUrl}
-            isLive={isLive}
-          />
-          {!collapsed && (
-            <p className="truncate">
-              {username}
-            </p>
+        <div
+          className={cn(
+            "flex items-center w-full gap-x-4",
+            collapsed && "justify-center",
           )}
-          {!collapsed && isLive && (
-            <LiveBadge className="ml-auto" />
-          )}
+        >
+          <UserAvator username={username} imageUrl={imageUrl} isLive={isLive} />
+          {!collapsed && <p className="truncate">{username}</p>}
+          {!collapsed && isLive && <LiveBadge className="ml-auto" />}
         </div>
       </Link>
     </Button>
