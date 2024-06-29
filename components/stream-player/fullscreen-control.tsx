@@ -17,6 +17,7 @@ export const FullscreenControl = ({
     <div className="flex items-center justify-center gap-4">
       <Hint label={label} asChild>
         <button
+          type="button"
           onClick={onToggle}
           className="text-white p-1.5 hover:bg-white/10 rounded-lg"
         >
