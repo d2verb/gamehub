@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "check": "bunx @biomejs/biome check ./src && next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.5",
