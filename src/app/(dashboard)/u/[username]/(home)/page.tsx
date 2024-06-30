@@ -2,13 +2,13 @@ import { StreamPlayer } from "@/components/stream-player";
 import { getUserByUsername } from "@/lib/user-service";
 import { currentUser } from "@clerk/nextjs/server";
 
-interface CreatorPageProps {
+interface DashboardPageProps {
   params: {
     username: string;
   };
 }
 
-export default async ({ params }: CreatorPageProps) => {
+export default async function DashboardPage({ params }: DashboardPageProps) {
   const externalUser = await currentUser();
   const user = await getUserByUsername(params.username);
 
@@ -21,4 +21,4 @@ export default async ({ params }: CreatorPageProps) => {
       <StreamPlayer user={user} stream={user.stream} isFollowing />
     </div>
   );
-};
+}

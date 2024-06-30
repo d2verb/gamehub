@@ -4,12 +4,15 @@ import { Container } from "./_components/container";
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
 
-interface CreatorLayoutProps {
+interface DashboardLayoutProps {
   params: { username: string };
   children: React.ReactNode;
 }
 
-export default async ({ params, children }: CreatorLayoutProps) => {
+export default async function DashboardLayout({
+  params,
+  children,
+}: DashboardLayoutProps) {
   const self = await getSelfByUsername(params.username);
 
   if (!self) {
@@ -25,4 +28,4 @@ export default async ({ params, children }: CreatorLayoutProps) => {
       </div>
     </>
   );
-};
+}

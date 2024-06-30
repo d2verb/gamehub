@@ -28,11 +28,12 @@ export const ChatForm = ({
   isFollowing,
   isDelayed,
 }: ChatFormProps) => {
+  const [isDelayBlocked, setIsDelayBlocked] = useState(false);
+
   if (isHidden) {
     return null;
   }
 
-  const [isDelayBlocked, setIsDelayBlocked] = useState(false);
   const isFollowersOnlyAndNotFollowing = isFollowersOnly && !isFollowing;
   const isDisabled =
     isHidden || isDelayBlocked || isFollowersOnlyAndNotFollowing;

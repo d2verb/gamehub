@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
 import { ConnectModal } from "./_components/connect-modal";
 import { KeyCard } from "./_components/key-card";
 import { UrlCard } from "./_components/url-card";
 
-export default async () => {
+export default async function KeysSettingsPage() {
   const self = await getSelf();
   const stream = await getStreamByUserId(self.id);
 
@@ -25,4 +24,4 @@ export default async () => {
       </div>
     </div>
   );
-};
+}

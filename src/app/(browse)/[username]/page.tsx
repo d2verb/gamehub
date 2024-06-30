@@ -10,7 +10,7 @@ interface UserPageProps {
   };
 }
 
-export default async ({ params }: UserPageProps) => {
+export default async function UserPage({ params }: UserPageProps) {
   const user = await getUserByUsername(params.username);
   if (!user || !user.stream) {
     notFound();
@@ -26,4 +26,4 @@ export default async ({ params }: UserPageProps) => {
   return (
     <StreamPlayer user={user} stream={user.stream} isFollowing={isFollowing} />
   );
-};
+}

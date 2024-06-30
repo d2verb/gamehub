@@ -3,7 +3,11 @@ import { Container } from "./_components/container";
 import { Navbar } from "./_components/navbar";
 import { Sidebar, SidebarSkeleton } from "./_components/sidebar";
 
-export default ({ children }: { children: React.ReactNode }) => {
+interface HomeLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <>
       <Navbar />
@@ -15,4 +19,4 @@ export default ({ children }: { children: React.ReactNode }) => {
       </div>
     </>
   );
-};
+}

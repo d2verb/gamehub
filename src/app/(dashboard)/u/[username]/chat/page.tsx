@@ -2,7 +2,7 @@ import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
 import { ToggleCard } from "./_components/toggle-card";
 
-export default async () => {
+export default async function ChatSettingsPage() {
   const self = await getSelf();
   const stream = await getStreamByUserId(self.id);
 
@@ -34,4 +34,4 @@ export default async () => {
       </div>
     </div>
   );
-};
+}
