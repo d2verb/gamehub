@@ -32,8 +32,8 @@ export const createViwerToken = async (hostIdentity: string) => {
 
   const isHost = self.id === host.id;
   const token = new AccessToken(
-    process.env.LIVEKIT_API_KEY!,
-    process.env.LIKEKIT_API_SECRET!,
+    process.env.LIVEKIT_API_KEY || "",
+    process.env.LIKEKIT_API_SECRET || "",
     {
       identity: isHost ? `host-${self.id}` : self.id,
       name: self.username,

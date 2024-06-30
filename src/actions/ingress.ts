@@ -17,12 +17,12 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 const roomService = new RoomServiceClient(
-  process.env.LIVEKIT_API_URL!,
-  process.env.LIVEKIT_API_KEY!,
-  process.env.LIVEKIT_API_SECRET!,
+  process.env.LIVEKIT_API_URL || "",
+  process.env.LIVEKIT_API_KEY || "",
+  process.env.LIVEKIT_API_SECRET || "",
 );
 
-const ingressClient = new IngressClient(process.env.LIVEKIT_API_URL!);
+const ingressClient = new IngressClient(process.env.LIVEKIT_API_URL || "");
 
 export const resetIngresses = async (hostIdentity: string) => {
   const ingresses = await ingressClient.listIngress({

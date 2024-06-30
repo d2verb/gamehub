@@ -53,6 +53,7 @@ export const InfoCard = ({
             {thumbnailUrl && (
               <div className="relative aspect-video rounded-md overflow-hidden w-[200px] border border-white/10">
                 <Image
+                  priority
                   fill
                   src={thumbnailUrl}
                   alt={name}
