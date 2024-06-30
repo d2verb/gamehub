@@ -38,7 +38,7 @@ export const AboutCard = ({
           {followedByLabel}
         </div>
         <p className="text-sm">
-          {bio || <div className="text-muted-foreground">No bio</div>}
+          {bio || <span className="text-muted-foreground">No bio</span>}
         </p>
       </div>
     </div>

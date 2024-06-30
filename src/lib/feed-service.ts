@@ -2,7 +2,7 @@ import { getSelf } from "@/lib/auth-service";
 import { db } from "@/lib/db";
 
 export const getStreams = async () => {
-  let userId;
+  let userId: string | null;
 
   try {
     const self = await getSelf();

@@ -7,6 +7,7 @@ import {
   useTracks,
 } from "@livekit/components-react";
 import { ConnectionState, Track } from "livekit-client";
+import type { ReactElement } from "react";
 import { LiveVideo } from "./live-video";
 import { LoadingVideo } from "./loading-video";
 import { OfflineVideo } from "./offline-video";
@@ -24,7 +25,7 @@ export const Video = ({ hostName, hostIdentity }: VideoProps) => {
     Track.Source.Microphone,
   ]).filter((track) => track.participant.identity === hostIdentity);
 
-  let content;
+  let content: ReactElement;
 
   if (!participant && connectionState === ConnectionState.Connected) {
     content = <OfflineVideo username={hostName} />;
