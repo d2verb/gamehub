@@ -6,9 +6,10 @@ import { v4 } from "uuid";
 import { getSelf } from "@/lib/auth-service";
 import { isBlockedByUser } from "@/lib/block-service";
 import { getUserById } from "@/lib/user-service";
+import type { User } from "@prisma/client";
 
 export const createViwerToken = async (hostIdentity: string) => {
-  let self;
+  let self: User | { id: string; username: string };
 
   try {
     self = await getSelf();

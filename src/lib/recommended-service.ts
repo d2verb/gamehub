@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 
 export const getRecommended = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  let userId;
+  let userId: string | null;
 
   try {
     const self = await getSelf();

@@ -2,6 +2,7 @@ import { LiveBadge } from "@/components/live-badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UserAvator } from "@/components/user-avatar";
 import Image from "next/image";
+import type { ReactElement } from "react";
 
 interface ThumbnailProps {
   src: string | null;
@@ -16,7 +17,7 @@ export const Thumbnail = ({
   isLive,
   username,
 }: ThumbnailProps) => {
-  let content;
+  let content: ReactElement;
 
   if (!src) {
     content = (

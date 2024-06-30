@@ -2,6 +2,7 @@
 
 import { getSelf } from "@/lib/auth-service";
 import { blockUser, unblockUser } from "@/lib/block-service";
+import type { Block } from "@prisma/client";
 import { RoomServiceClient } from "livekit-server-sdk";
 import { revalidatePath } from "next/cache";
 
@@ -14,7 +15,8 @@ const roomService = new RoomServiceClient(
 export const onBlock = async (id: string) => {
   const self = await getSelf();
 
-  let block;
+  let block: Block | undefined;
+
   try {
     block = await blockUser(id);
   } catch {
