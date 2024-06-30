@@ -44,6 +44,7 @@ export const FollowingSkeleton = () => {
   return (
     <ul className="pt-2 px-2">
       {[...Array(3)].map((_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: we just need a unique key
         <UserItemSkeleton key={i} />
       ))}
     </ul>

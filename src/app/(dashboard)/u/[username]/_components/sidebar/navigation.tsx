@@ -36,6 +36,7 @@ export const Navigation = () => {
     return (
       <ul>
         {[...Array(4)].map((_, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: we just need a unique key
           <NavItemSkeleton key={i} />
         ))}
       </ul>
