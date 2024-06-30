@@ -81,11 +81,22 @@ export async function POST(req: Request) {
   }
 
   if (eventType === "user.deleted") {
-    await db.user.delete({
+    const existingRecord = await db.user.findUnique({
+      select: {
+        id: true,
+        externalUserId: true,
+      },
       where: {
         externalUserId: payload.data.id,
       },
     });
+    if (existingRecord) {
+      await db.user.delete({
+        where: {
+          externalUserId: payload.data.id,
+        },
+      });
+    }
   }
 
   return new Response("", { status: 200 });
