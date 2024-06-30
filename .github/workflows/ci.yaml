@@ -60,4 +60,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
       - name: Run test
-        run: bun run test
+        run: bun run coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          token: ${{ secrets.CODECOV_TOKEN }}
