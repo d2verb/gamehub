@@ -1,4 +1,4 @@
-name: Check diff in bun lockfile
+name: Check bun.lockb diff
 
 on:
   pull_request:
@@ -19,12 +19,12 @@ jobs:
         run: |
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
-      - name: Get diff of bun lockfile
+      - name: Get bun.lockb diff
         id: get-diff
-        run: echo "diff=$(git diff origin/main HEAD -- bun.lockb)" >> $GITHUB_OUTPUT
-      - name: Post diff comment to PR
+        run: echo "diff=$(git diff origin/${{ github.base_ref }} HEAD -- bun.lockb)" >> $GITHUB_OUTPUT
+      - name: Post diff result to PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
         run: |
-          gh pr comment $PR_NUMBER --body "## Diff in bun.lockb\n\`\`\`diff\n${{ steps.get-diff.outputs.diff }}\n\`\`\`"
+          gh pr comment $PR_NUMBER --body "## Diff in bun.lockb\\n\`\`\`diff\\n${{ steps.get-diff.outputs.diff }}\\n\`\`\`"
