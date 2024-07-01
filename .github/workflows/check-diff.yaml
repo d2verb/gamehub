@@ -1,0 +1,30 @@
+name: Check diff in bun lockfile
+
+on:
+  pull_request:
+    paths:
+      - "bun.lockb"
+
+jobs:
+  check-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Setup for lockfile diff
+        run: |
+          git config diff.lockb.textconv bun
+          git config diff.lockb.binary true
+      - name: Get diff of bun lockfile
+        id: get-diff
+        run: echo "diff=$(git diff origin/main HEAD -- bun.lockb)" >> $GITHUB_OUTPUT
+      - name: Post diff comment to PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          gh pr comment $PR_NUMBER --body "## Diff in bun.lockb\n\`\`\`diff\n${{ steps.get-diff.outputs.diff }}\n\`\`\`"
