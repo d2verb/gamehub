@@ -21,7 +21,9 @@ jobs:
           git config diff.lockb.binary true
       - name: Get bun.lockb diff
         id: get-diff
-        run: echo "diff=$(git diff origin/${{ github.base_ref }} HEAD -- bun.lockb)" >> $GITHUB_OUTPUT
+        run: |
+          git diff origin/${{ github.base_ref }} HEAD -- bun.lockb
+          echo "diff=$(git diff origin/${{ github.base_ref }} HEAD -- bun.lockb)" >> $GITHUB_OUTPUT
       - name: Post diff result to PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
