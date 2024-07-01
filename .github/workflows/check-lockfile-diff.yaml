@@ -27,6 +27,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.number }}
         run: |
+          echo "${{ steps.get-diff.outputs.diff }}"
           gh pr comment $PR_NUMBER --body "## bun.lockb diff
           \`\`\`diff
           ${{ steps.get-diff.outputs.diff }}
