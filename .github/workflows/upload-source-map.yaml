@@ -1,0 +1,28 @@
+name: Upload source map
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  upload-source-map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
+      - name: Install dependencies
+        run: bun install
+      - name: Upload source map
+        run: bun run build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
